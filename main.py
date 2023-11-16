@@ -1,14 +1,15 @@
-from pytube import YouTube
+from flask import Flask, render_template, request, send_file
 
-def Download(link):
-    youtubeObject = YouTube(link)
-    youtubeObject = youtubeObject.streams.get_highest_resolution()
-    try:
-        youtubeObject.download()
-    except:
-        print("An error has occurred")
-    print("Download is completed successfully")
+app = Flask(__name__)
 
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-link = input("Enter the YouTube video URL: ")
-Download(link)
+@app.route('/', methods=['POST'])
+def download():
+    link = request.form['text']
+    return send_file('test.txt', as_attachment=True)
+
+#TODO: TURN OFF DEBUG MODE
+app.run(debug=True);
