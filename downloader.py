@@ -1,14 +1,14 @@
+import time
 from pytube import YouTube
 
-def Download(link):
-    youtubeObject = YouTube(link)
-    youtubeObject = youtubeObject.streams.get_highest_resolution()
+def ytDownload(link: str) -> str:
+    pytube = YouTube(link)
+    stream = pytube.streams.get_highest_resolution()
+
+    filename = f'temp{round(time.time() * 1000)}.mp4'
+
     try:
-        youtubeObject.download()
+        stream.download(output_path='temp', filename=filename)
     except:
-        print("An error has occurred")
-    print("Download is completed successfully")
-
-
-link = input("Enter the YouTube video URL: ")
-Download(link)
+        return None
+    return filename
