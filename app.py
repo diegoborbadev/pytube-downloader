@@ -27,13 +27,15 @@ def download():
         return send_file( f'temp/{filename}', as_attachment=True)
     else:
         # Render index again
-        return render_template('index.html') # TODO: Show possible erros
+        return render_template('index.html') # TODO: SHOW POSSIBLE ERRORS
 
-# Start the cleaner
-cleaner_thread.start()
+# Scope verification
+if __name__ == "__main__":
+    # Start the cleaner
+    cleaner_thread.start()
 
-# Start the app
-app.run(debug=True) # TODO: TURN OFF DEBUG MODE
+    # Start the app
+    app.run(debug=True) # TODO: TURN OFF DEBUG MODE
 
-# Join cleaner before end
-cleaner_thread.join()
+    # Join cleaner before end
+    cleaner_thread.join()
