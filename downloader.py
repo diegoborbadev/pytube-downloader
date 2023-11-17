@@ -1,11 +1,11 @@
-import time
+from time import time
 from pytube import YouTube
 
-def ytDownload(link: str) -> str:
+def youtube(link: str) -> str:
     pytube = YouTube(link)
     stream = pytube.streams.get_highest_resolution()
 
-    filename = f'temp{round(time.time() * 1000)}.mp4'
+    filename = f'temp{round(time() * 1000)}.mp4'
 
     try:
         stream.download(output_path='temp', filename=filename)

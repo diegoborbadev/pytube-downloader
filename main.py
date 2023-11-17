@@ -1,8 +1,11 @@
-from flask import Flask, render_template, request, send_file, after_this_request
-from downloader import ytDownload
-import os
+from downloader import youtube
+from cleaner import clear_directory
+from threading import Thread
+from flask import Flask, render_template, request, send_file
 
 app = Flask(__name__)
+
+cleaner_thread = Thread(target=clear_directory)
 
 @app.route('/')
 def index():
@@ -11,7 +14,7 @@ def index():
 @app.route('/', methods=['POST'])
 def download():
     link = request.form['text']
-    filename = ytDownload(link)
+    filename = youtube(link)
 
     if(filename):
         filePath = f'temp/{filename}'
@@ -20,5 +23,7 @@ def download():
     else:
         return render_template('index.html')
 
-# TODO: TURN OFF DEBUG MODE
-app.run(debug=True)
+
+cleaner_thread.start()
+app.run(debug=True) # TODO: TURN OFF DEBUG MODE
+cleaner_thread.join()
