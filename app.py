@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, send_file
 
 # App instance
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 # Automatically clean the /temp
 cleaner_thread = Thread(target=clear_directory)
@@ -17,22 +18,21 @@ def index():
 # Download endpoint
 @app.route('/', methods=['POST'])
 def download():
-    #TODO: VERIFY DOWNLOAD TYPE
+    #TODO: VERIFY DOWNLOAD TYPE PROPPERLY
     type = request.form['type']
 
     # Media link
     link = request.form['text']
     
-    # TODO: VERIFY LINK FORMAT
-    filename = youtube(link, type == 'audio')
-
-    # Verify the filename
-    if(filename):
-        # Download the file
+    try:
+        # Get the file (locally)
+        filename = youtube(link, type == 'audio')
+        
+        # Download the file (browser)
         return send_file( f'temp/{filename}', as_attachment=True)
-    else:
-        # Render index again
-        return render_template('index.html') # TODO: SHOW POSSIBLE ERRORS
+    except:
+        # Render index again (with error)
+        return render_template('index.html', error='Invalid link')
 
 # Scope verification
 if __name__ == "__main__":
