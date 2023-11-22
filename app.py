@@ -24,7 +24,7 @@ def download():
     link = request.form['text']
     
     # TODO: VERIFY LINK FORMAT
-    filename = youtube(link)
+    filename = youtube(link, type == 'audio')
 
     # Verify the filename
     if(filename):
