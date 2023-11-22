@@ -17,8 +17,13 @@ def index():
 # Download endpoint
 @app.route('/', methods=['POST'])
 def download():
+    #TODO: VERIFY DOWNLOAD TYPE
+    type = request.form['type']
+
     # Media link
     link = request.form['text']
+    
+    # TODO: VERIFY LINK FORMAT
     filename = youtube(link)
 
     # Verify the filename
