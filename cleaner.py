@@ -4,6 +4,8 @@ from time import sleep
 
 DIRECTORY_PATH = 'temp'
 
+TIME = 60 * 30  # 30 minutes
+
 def clear_directory():
     while True:
         try:
@@ -24,5 +26,5 @@ def clear_directory():
             # Handle error
             print(f"An error occurred: {str(e)}") #TODO: LOG
         
-        # Wait 30 seconds
-        sleep(30)
+        # Wait
+        sleep(TIME)
