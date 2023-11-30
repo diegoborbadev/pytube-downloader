@@ -8,12 +8,12 @@
 </head>
 
 <body>
-    <form action="/streams" method="POST">
+    <form method="POST">
         <select name="type" id="type">
-            <option value="video">Video</option>
-            <option value="audio">Audio</option>
+            {%for stream in streams%} 
+            <option value="{{stream.itag}}">{{stream.abr if is_audio else "{} - {}".format(stream.resolution, stream.subtype)}}</option>
+            {%endfor%}
         </select>
-        <input name="text">
         <input type="submit">
     </form>
 
