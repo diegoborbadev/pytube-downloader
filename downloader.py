@@ -1,7 +1,7 @@
 from time import time
 from pytube import YouTube
 
-def youtube(link: str, audio = False) -> str:
+def download(link: str, audio = False) -> str:
     """Donwload a video from youtube
 
     #### Parameters

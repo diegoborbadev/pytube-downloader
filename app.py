@@ -1,4 +1,4 @@
-from downloader import youtube
+from downloader import download
 from cleaner import clear_directory
 from threading import Thread
 from flask import Flask, render_template, request, send_file
@@ -26,7 +26,7 @@ def download():
     
     try:
         # Get the file (locally)
-        filename = youtube(link, type == 'audio')
+        filename = download(link, type == 'audio')
         
         # Download the file (browser)
         return send_file( f'temp/{filename}', as_attachment=True)
