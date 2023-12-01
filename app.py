@@ -16,37 +16,49 @@ cleaner_thread = Thread(target=clear_directory)
 def index():
     return render_template('index.html')
 
-# Download endpoint
+# Get download streams
+def get_streams(link: str, type : str):
+    # Instance pytube
+    pytube = YouTube(link)
+
+    # Verify type
+    if(type == 'audio'):
+        return pytube.streams.filter(type=type, progressive="False").order_by("abr").desc()
+    else:
+        return pytube.streams.filter(type=type, progressive="False").order_by("resolution").desc()
+
+# Stream select endpoint
 @app.route('/streams', methods=['POST'])
 def streams():
-    # Media link
-    link = request.form['text']
+    # Download type
+    type = request.form['type']
     
-    # Download type:
+    # Video link
+    link = request.form['link']
+    
+    # Get streams
+    streams = get_streams(link, type)
+
+    return render_template('streams.html', link=link, streams=streams, type=type)
+    
+    
+# Download endpoint
+@app.route('/download', methods=['POST'])
+def download():
+    # Stream id (itag)
+    stream_id = request.form['stream']
+    
+    # Video link
+    link = request.form['link']
+
+    # Download type
     type = request.form['type']
 
-    # Instance pytube
-    pytube = YouTube(link)
-
-    # Get streams
-    is_audio = type == 'audio'
-    if(is_audio):
-        streams = pytube.streams.filter(type=type, progressive="False").order_by("abr").desc()
-    else:
-        streams = pytube.streams.filter(type=type, progressive="False").order_by("resolution").desc()
-
-    return render_template('streams.html', link=link, streams=streams, is_audio=is_audio)
-    
-@app.route('/download', methods=['POST'])
-def download(link : str, audio: bool):
-    # Instance pytube
-    pytube = YouTube(link)
-
     # Get the stream
-    stream = pytube.streams.get_audio_only() if audio else pytube.streams.get_highest_resolution()
+    stream = get_streams(link, type).get_by_itag(int(stream_id))
 
     # Generate filename
-    filename = f'temp{round(time() * 1000)}.{"mp3" if audio else "mp4"}'
+    filename = f'temp{round(time() * 1000)}.{"mp3" if type == "audio" else "mp4"}'
 
     # Download
     try:

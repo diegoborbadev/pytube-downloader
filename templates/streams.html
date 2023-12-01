@@ -8,12 +8,14 @@
 </head>
 
 <body>
-    <form method="POST">
-        <select name="type" id="type">
+    <form  action="/download" method="POST">
+        <select name="stream" id="stream">
             {%for stream in streams%} 
-            <option value="{{stream.itag}}">{{stream.abr if is_audio else "{} - {}".format(stream.resolution, stream.subtype)}}</option>
+            <option value="{{stream.itag}}">{{stream.abr if type == "audio" else "{} - {}".format(stream.resolution, stream.subtype)}}</option>
             {%endfor%}
         </select>
+        <input type="hidden" name="link" value="{{link}}"/>
+        <input type="hidden" name="type" value="{{type}}"/>
         <input type="submit">
     </form>
 
