@@ -58,7 +58,7 @@ def download():
     stream = get_streams(link, type).get_by_itag(int(stream_id))
 
     # Generate filename
-    filename = f'temp{round(time() * 1000)}.{"mp3" if type == "audio" else "mp4"}'
+    filename = f'temp{round(time() * 1000)}.{stream.subtype}'
 
     # Download
     try:
