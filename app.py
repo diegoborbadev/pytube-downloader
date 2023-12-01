@@ -2,6 +2,7 @@ from time import time
 from pytube import YouTube
 from threading import Thread
 from cleaner import clear_directory
+from pytube.exceptions import RegexMatchError
 from flask import Flask, render_template, request, send_file
 
 # App instance
@@ -38,10 +39,13 @@ def streams():
     # Video link
     link = request.form['link']
     
-    # Get streams
-    streams = get_streams(link, type)
-
-    return render_template('streams.html', link=link, streams=streams, type=type)
+    try:
+        # Get streams
+        streams = get_streams(link, type)
+        return render_template('streams.html', link=link, streams=streams, type=type)
+    except RegexMatchError:
+        # Error handling
+        return render_template('index.html', error='Invalid link!')
     
     
 # Download endpoint
@@ -63,13 +67,10 @@ def download():
     filename = f'temp{round(time() * 1000)}.{stream.subtype}'
 
     # Download
-    try:
-        stream.download(output_path='temp', filename=filename)
-        # Download the file (browser)
-        return send_file( f'temp/{filename}', as_attachment=True)
-    except:
-        # Render index again (with error)
-        return render_template('index.html', error='Invalid link')   
+    stream.download(output_path='temp', filename=filename)
+    
+    # Download the file (browser)
+    return send_file( f'temp/{filename}', as_attachment=True) 
 
 # Scope verification
 if __name__ == "__main__":
