@@ -22,10 +22,7 @@ def get_streams(link: str, type : str):
     pytube = YouTube(link)
 
     # Verify type
-    if(type == 'audio'):
-        return pytube.streams.filter(type=type, progressive="False").order_by("abr").desc()
-    else:
-        return pytube.streams.filter(type=type, progressive="False").order_by("resolution").desc()
+    return pytube.streams.filter(type=type, progressive="False").order_by("abr" if type == 'audio' else "resolution").desc()
 
 # Stream select endpoint
 @app.route('/streams', methods=['POST'])
