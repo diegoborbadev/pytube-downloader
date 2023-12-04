@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
+{% block body %}
 <body>
     <form  action="/download" method="POST">
         <select name="stream" id="stream">
@@ -26,5 +20,4 @@
         }
     </script>
 </body>
-
-</html>
+{% endblock %}
