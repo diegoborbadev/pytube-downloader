@@ -1,21 +1,12 @@
 {% extends 'base.html' %}
 
-{% block body %}
-<body>
-    <form action="/streams" method="POST">
-        <select name="type" id="type">
-            <option value="video">Video</option>
-            <option value="audio">Audio</option>
-        </select>
-        <input name="link">
-        <input type="submit">
-    </form>
-
-    <script>
-        var error = '{{error}}'
-        if(error){
-            alert(error)
-        }
-    </script>
-</body>
+{% block content %}
+<form action="/streams" method="POST">
+    <select name="type" id="type">
+        <option value="video">Video</option>
+        <option value="audio">Audio</option>
+    </select>
+    <input name="link">
+    <input type="submit" value="Start">
+</form>
 {% endblock %}
