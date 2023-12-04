@@ -24,7 +24,7 @@ def get_streams(link: str, type : str):
 
     # Verify type
     is_audio = type == 'audio'
-    progressive=None if is_audio else "False"
+    progressive = None if is_audio else "False"
     order_by = "abr" if is_audio else "resolution"
 
     # Return streams
