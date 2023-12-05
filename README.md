@@ -1,2 +1,2 @@
-# media-downloader
-media-downloader
+# youtube-downloader
+youtube-downloader
