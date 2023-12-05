@@ -1,0 +1,25 @@
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.submit {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 0 4px 4px 0;
+    padding: 7px 24px;
+    display: inline-block;
+    color: #fff;
+    border: 1px solid #ff2100;
+    background: #ff2100;
+    cursor: pointer;
+}
+
+.submit:hover {
+    color: #fff;
+    background: #cb0000;
+    border: 1px solid #ff2100;
+}

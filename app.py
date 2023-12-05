@@ -49,14 +49,14 @@ def streams():
 # Download endpoint
 @app.route('/download', methods=['POST'])
 def download():
-    # Stream id (itag)
-    stream_id = request.form['stream']
+    # Stream index
+    index = int(request.form['stream'])
     
     # Video link
     link = request.form['link']
 
     # Get the stream
-    stream = get_streams(link).get_by_itag(int(stream_id))
+    stream = get_streams(link)[index]
 
     # Generate filename
     filename = f'temp{round(time() * 1000)}.{stream.subtype}'
