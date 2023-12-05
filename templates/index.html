@@ -6,12 +6,14 @@
         border: 7px solid #5cb85c;
         padding-right: 130px;
         outline: none;
+        height: 30px;
+        padding: 0 14px;
     }
 {% endblock %}
 
 {% block content %}
 <form action="/streams" method="POST">
-    <input class="link" name="link" size="50">
-    <input class="submit" type="submit" value="Start">
+    <input class="link" name="link" size="50" placeholder="Youtube video link here..." autocomplete="off">
+    <input style="height: 43.6px;" class="submit" type="submit" value="Start">
 </form>
 {% endblock %}

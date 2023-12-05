@@ -6,6 +6,7 @@
         border: 7px solid #5cb85c;
         padding-right: 130px;
         outline: none;
+        height: 40px;
     }
 {% endblock %}
 
@@ -17,6 +18,6 @@
         {%endfor%}
     </select>
     <input type="hidden" name="link" value="{{link}}" />
-    <input class="submit" type="submit" value="Download">
+    <input style="height: 40px;" class="submit" type="submit" value="Download">
 </form>
 {% endblock %}
