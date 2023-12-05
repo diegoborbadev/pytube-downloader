@@ -1,8 +1,17 @@
 {% extends 'base.html' %}
 
+{% block style %}
+    .stream {
+        border-radius: 4px;
+        border: 7px solid #5cb85c;
+        padding-right: 130px;
+        outline: none;
+    }
+{% endblock %}
+
 {% block content %}
 <form action="/download" method="POST">
-    <select name="stream" id="stream">
+    <select class="stream" name="stream" id="stream">
         {%for stream in streams%}
         <option value="{{stream.itag}}">{{stream.abr if type == "audio" else "{} - {}".format(stream.resolution,
             stream.subtype)}}</option>
@@ -10,6 +19,6 @@
     </select>
     <input type="hidden" name="link" value="{{link}}" />
     <input type="hidden" name="type" value="{{type}}" />
-    <input type="submit" value="Download">
+    <input class="submit" type="submit" value="Download">
 </form>
 {% endblock %}
