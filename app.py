@@ -18,31 +18,29 @@ def index():
     return render_template('index.html')
 
 # Get download streams
-def get_streams(link: str, type : str):
+def get_streams(link: str):
     # Instance pytube
     pytube = YouTube(link)
 
-    # Verify type
-    is_audio = type == 'audio'
-    progressive = None if is_audio else "False"
-    order_by = "abr" if is_audio else "resolution"
+    # Video Streams
+    streams = pytube.streams.filter(type='video', progressive="False").order_by("resolution").desc()
+
+    # Audio Streams
+    streams.fmt_streams+= pytube.streams.filter(type='audio', progressive=None).order_by("abr").desc()
 
     # Return streams
-    return pytube.streams.filter(type=type, progressive=progressive).order_by(order_by).desc()
+    return streams
 
 # Stream select endpoint
 @app.route('/streams', methods=['POST'])
 def streams():
-    # Download type
-    type = request.form['type']
-    
     # Video link
     link = request.form['link']
     
     try:
         # Get streams
-        streams = get_streams(link, type)
-        return render_template('streams.html', link=link, streams=streams, type=type)
+        streams = get_streams(link)
+        return render_template('streams.html', link=link, streams=streams)
     except RegexMatchError:
         # Error handling
         return render_template('index.html', error='Invalid link!')
@@ -57,11 +55,8 @@ def download():
     # Video link
     link = request.form['link']
 
-    # Download type
-    type = request.form['type']
-
     # Get the stream
-    stream = get_streams(link, type).get_by_itag(int(stream_id))
+    stream = get_streams(link).get_by_itag(int(stream_id))
 
     # Generate filename
     filename = f'temp{round(time() * 1000)}.{stream.subtype}'

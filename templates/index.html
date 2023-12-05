@@ -1,16 +1,6 @@
 {% extends 'base.html' %}
 
 {% block style %}
-    .type {
-        position: absolute;
-        border-radius: 4px 0 0 4px;
-        padding: 5px 8px;
-        display: inline-block;
-        color: #fff;
-        border: 1px solid #5cb85c;
-        background: #5cb85c;
-    }
-
     .link {
         border-radius: 4px;
         border: 7px solid #5cb85c;
@@ -21,10 +11,6 @@
 
 {% block content %}
 <form action="/streams" method="POST">
-    <select class="type" name="type" id="type">
-        <option value="video">Video</option>
-        <option value="audio">Audio</option>
-    </select>
     <input class="link" name="link" size="50">
     <input class="submit" type="submit" value="Start">
 </form>
