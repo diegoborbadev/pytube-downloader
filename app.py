@@ -4,7 +4,7 @@ from threading import Thread
 from urllib.error import URLError
 from cleaner import clear_directory
 from pytube.exceptions import RegexMatchError
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, redirect, url_for
 
 # App instance
 app = Flask(__name__)
@@ -16,7 +16,8 @@ cleaner_thread = Thread(target=clear_directory)
 # Index
 @app.route('/')
 def index():
-    return render_template('index.html')
+    error = request.args.get('error') or ""
+    return render_template('index.html', error=error)
 
 # Get download streams
 def get_streams(link: str):
@@ -51,7 +52,7 @@ def streams():
     except URLError:
         error = 'Connection Problem!'
 
-    return render_template('index.html', error=error)
+    return redirect(url_for('.index', error=error))
     
     
 # Download endpoint
