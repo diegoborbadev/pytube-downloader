@@ -3,7 +3,7 @@ from pytube import YouTube
 from threading import Thread
 from urllib.error import URLError
 from cleaner import clear_directory
-from pytube.exceptions import RegexMatchError
+from pytube.exceptions import RegexMatchError, AgeRestrictedError
 from flask import Flask, render_template, request, send_file, redirect, url_for
 
 # App instance
@@ -16,8 +16,8 @@ cleaner_thread = Thread(target=clear_directory)
 # Index
 @app.route('/')
 def index():
-    error = request.args.get('error') or ""
-    return render_template('index.html', error=error)
+    message = request.args.get('message') or ""
+    return render_template('index.html', message=message)
 
 # Get download streams
 def get_streams(link: str):
@@ -46,13 +46,17 @@ def streams():
     
     # Input problem
     except RegexMatchError:
-        error = 'Invalid link!'
+        message = 'Invalid link!'
    
    # Connection Problem
     except URLError:
-        error = 'Connection Problem!'
+        message = 'Connection problem!'
 
-    return redirect(url_for('.index', error=error))
+    # Age Restricted Video
+    except AgeRestrictedError:
+        message = 'Age restricted videos cannot be downloaded!'
+
+    return redirect(url_for('.index', message=message))
     
     
 # Download endpoint
