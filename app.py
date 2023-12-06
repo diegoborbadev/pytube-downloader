@@ -59,7 +59,7 @@ def streams():
     return redirect(url_for('.index', message=message))
     
     
-# Download endpoint
+# Download endpoint (Local)
 @app.route('/download', methods=['POST'])
 def download():
     # Stream index
@@ -76,7 +76,13 @@ def download():
 
     # Download
     stream.download(output_path='temp', filename=filename)
-    
+
+    # Redirect
+    return render_template('download.html', filename=filename)
+
+# Download endpoint (Browser)
+@app.route('/download/<filename>')
+def downloadFile(filename):
     # Download the file (browser)
     return send_file( f'temp/{filename}', as_attachment=True) 
 
