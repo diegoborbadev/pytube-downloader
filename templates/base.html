@@ -16,12 +16,19 @@
     </script>
 
     <style>
-        img {
-        visibility: hidden;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 95px;
+        .loading {
+            visibility: hidden;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 95px;
+        }
+
+        .logo {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         
         {% block style %}{% endblock %}
@@ -29,11 +36,12 @@
 </head>
 
 <body>
+    <embed class="logo" src="{{ url_for('static', filename='logo.svg') }}" alt="Logo">
 
     <div class="container">
         {% block content %}{% endblock %}
 
-        <img id="loading" src="{{ url_for('static', filename='loading.gif') }}" alt="Loading">
+        <img id="loading" class="loading" src="{{ url_for('static', filename='loading.gif') }}" alt="Loading">
     </div>
 
     <script>
