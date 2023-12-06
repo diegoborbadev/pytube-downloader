@@ -1,6 +1,7 @@
 from time import time
 from pytube import YouTube
 from threading import Thread
+from urllib.error import URLError
 from cleaner import clear_directory
 from pytube.exceptions import RegexMatchError
 from flask import Flask, render_template, request, send_file
@@ -41,9 +42,16 @@ def streams():
         # Get streams
         streams = get_streams(link)
         return render_template('streams.html', link=link, streams=streams)
+    
+    # Input problem
     except RegexMatchError:
-        # Error handling
-        return render_template('index.html', error='Invalid link!')
+        error = 'Invalid link!'
+   
+   # Connection Problem
+    except URLError:
+        error = 'Connection Problem!'
+
+    return render_template('index.html', error=error)
     
     
 # Download endpoint
