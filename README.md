@@ -23,7 +23,7 @@
     <img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/diegoborbadev/pytube-downloader?style=plastic&label=Contributors">
 </a>
 
-<a href="https://github.com/diegoborbadev/pytube-downloader/blob/master/LICENSE.md">
+<a href="https://github.com/diegoborbadev/pytube-downloader/blob/main/LICENSE">
     <img alt="GitHub License" src="https://img.shields.io/github/license/diegoborbadev/pytube-downloader?style=plastic&label=License">
 </a>
 </p>
