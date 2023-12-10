@@ -12,7 +12,7 @@
 </a>
 
 <a href="https://github.com/diegoborbadev/pytube-downloader/stargazers">
-    <img alt="GitHub Stars" src="https://img.shields.io/github/stars/diegoborbadev/pytube-downloader?label=Starse">
+    <img alt="GitHub Stars" src="https://img.shields.io/github/stars/diegoborbadev/pytube-downloader?label=Stars">
 </a>
 
 <a href="https://github.com/diegoborbadev/pytube-downloader/issues">
