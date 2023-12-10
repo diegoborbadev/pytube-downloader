@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block content %}
-<form action="/download" method="POST">
+<form action="{{ url_for('download') }}" method="POST">
     <select class="stream" name="stream" id="stream">
         {% for i in range(streams |length) %}
             {% with stream = streams[i] %}

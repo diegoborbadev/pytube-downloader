@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="/download/{{filename}}">
+<form action="{{ url_for('downloadFile', filename=filename) }}">
     <input class="submit" value="Download" style="height: 40px; border-radius: 4px 4px 4px 4px;" type="submit">
 </form>
 {% endblock %}

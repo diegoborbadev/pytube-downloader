@@ -56,7 +56,7 @@ def streams():
     except AgeRestrictedError:
         message = 'Age restricted videos cannot be downloaded!'
 
-    return redirect(url_for('.index', message=message))
+    return redirect(url_for('index', message=message))
     
     
 # Download endpoint (Local)
