@@ -1,27 +1,17 @@
 {% extends 'base.html' %}
 
-{% block head %}
-<style>
-    .stream {
-        border-radius: 4px;
-        border: 7px solid #ff2100;
-        padding-right: 130px;
-        outline: none;
-        height: 40px;
-    }
-</style>
-{% endblock %}
-
 {% block content %}
 <form action="{{ url_for('download') }}" method="POST">
-    <select class="stream" name="stream" id="stream">
-        {% for i in range(streams |length) %}
-            {% with stream = streams[i] %}
-            <option value="{{i}}">{{"{} (.{})".format( stream.abr if stream.type == "audio" else stream.resolution, stream.subtype)}}</option>
-            {% endwith %}
-        {% endfor %}
-    </select>
-    <input type="hidden" name="link" value="{{link}}" />
-    <input class="submit" value="Select" style="height: 40px;" type="submit" onclick="loading()">
+    <div class="input-group">
+        <select class="form-select border-danger border-5" name="stream" id="stream">
+            {% for i in range(streams |length) %}
+                {% with stream = streams[i] %}
+                <option value="{{i}}">{{"{} (.{})".format( stream.abr if stream.type == "audio" else stream.resolution, stream.subtype)}}</option>
+                {% endwith %}
+            {% endfor %}
+        </select>
+        <input type="hidden" name="link" value="{{link}}" />
+        <button class="btn btn-danger" type="submit" onclick="loading()">Select</button>
+    </div>
 </form>
 {% endblock %}

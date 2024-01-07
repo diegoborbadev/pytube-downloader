@@ -1,21 +1,10 @@
 {% extends 'base.html' %}
 
-{% block head %}
-<style>
-    .link {
-        border-radius: 4px;
-        border: 7px solid #ff2100;
-        padding-right: 130px;
-        outline: none;
-        height: 30px;
-        padding: 0 14px;
-    }
-</style>
-{% endblock %}
-
 {% block content %}
 <form action="{{ url_for('streams') }}" method="POST">
-    <input class="link" style="padding-right: 80px;" name="link" size="50" placeholder="Youtube video link here..." autocomplete="off">
-    <input class="submit" value="Start" style="height: 43.6px;" type="submit" onclick="loading()">
+    <div class="input-group">
+        <input class="form-control border-danger border-5" type="text" name="link" placeholder="Youtube video link here..." aria-label="Youtube video link here..." aria-describedby="start-button">
+        <button class="btn btn-danger" type="submit" id="start-button" onclick="loading()">Start</button>
+    </div>
 </form>
-{% endblock %}
+{% endblock %}  
