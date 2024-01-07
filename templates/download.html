@@ -2,8 +2,8 @@
 
 {% block content %}
 <form action="{{ url_for('downloadFile', filename=filename) }}">
-    <div class="input-group">
-        <button class="btn btn-danger position-absolute top-50 start-50 translate-middle" type="submit">Download</button>
+    <div class="input-group d-flex justify-content-center">
+        <button class="btn btn-danger btn-lg" type="submit">Download</button>
     </div>
 </form>
 {% endblock %}
