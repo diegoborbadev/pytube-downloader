@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!-- Form -->
 <form action="{{ url_for('download') }}" method="POST">
+    <!-- Input Group -->
     <div class="input-group">
+        <!-- Options (Streams) -->
         <select class="form-select border-danger border-5" name="stream" id="stream">
             {% for i in range(streams |length) %}
                 {% with stream = streams[i] %}
@@ -10,7 +13,11 @@
                 {% endwith %}
             {% endfor %}
         </select>
+
+        <!-- Link (Hidden) -->
         <input type="hidden" name="link" value="{{link}}" />
+
+        <!-- Select Button -->
         <button class="btn btn-danger" type="submit" onclick="loading()">Select</button>
     </div>
 </form>
