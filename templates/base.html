@@ -42,7 +42,7 @@
 <body>
     <div class="container position-absolute top-50 start-50 translate-middle">
         <div class="d-flex justify-content-center">
-            <embed class="logo" src="{{ url_for('static', filename='logo.svg') }}" alt="Logo">
+            <img class="img-fluid" src="{{ url_for('static', filename='logo.svg') }}" alt="Logo">
         </div>
         
         {% block content %}{% endblock %}
