@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!-- Form -->
 <form action="{{ url_for('streams') }}" method="POST">
+    <!-- Input Group -->
     <div class="input-group">
+        <!-- Link Input -->
         <input class="form-control border-danger border-5" type="text" name="link" placeholder="Youtube video link here..." aria-label="Youtube video link here..." aria-describedby="start-button">
+        
+        <!-- Start Button (get Streams) -->
         <button class="btn btn-danger" type="submit" id="start-button" onclick="loading()">Start</button>
     </div>
 </form>
