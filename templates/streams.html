@@ -7,11 +7,23 @@
     <div class="input-group">
         <!-- Options (Streams) -->
         <select class="form-select border-danger border-5" name="stream" id="stream">
-            {% for i in range(streams |length) %}
-                {% with stream = streams[i] %}
-                <option value="{{i}}">{{"{} (.{})".format( stream.abr if stream.type == "audio" else stream.resolution, stream.subtype)}}</option>
+            <!-- Video Streams -->
+            <option disabled>Video</option>
+            {% for i in range(video_streams |length) %}
+                {% with stream = video_streams[i] %}
+                <option value="{{i}}">{{"{} (.{})".format(stream.resolution, stream.subtype)}}</option>
                 {% endwith %}
             {% endfor %}
+            
+            <!-- Audio Streams -->
+            <option disabled>Audio</option>
+            {% with vs = video_streams |length %}
+            {% for i in range(audio_streams |length) %}
+                {% with stream = audio_streams[i] %}
+                <option value="{{i + vs}}">{{"{} (.{})".format(stream.abr, "mp3")}}</option>
+                {% endwith %}
+            {% endfor %}
+            {% endwith %}
         </select>
 
         <!-- Link (Hidden) -->
