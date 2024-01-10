@@ -9,21 +9,15 @@
         <select class="form-select border-danger border-5" name="stream" id="stream">
             <!-- Video Streams -->
             <option disabled>Video</option>
-            {% for i in range(video_streams |length) %}
-                {% with stream = video_streams[i] %}
-                <option value="{{i}}">{{"{} (.{})".format(stream.resolution, stream.subtype)}}</option>
-                {% endwith %}
+            {% for stream in video_streams %}
+                <option value="{{stream.itag}}">{{"{} (.{})".format(stream.resolution, stream.subtype)}}</option>
             {% endfor %}
             
             <!-- Audio Streams -->
             <option disabled>Audio</option>
-            {% with vs = video_streams |length %}
-            {% for i in range(audio_streams |length) %}
-                {% with stream = audio_streams[i] %}
-                <option value="{{i + vs}}">{{"{} (.{})".format(stream.abr, "mp3")}}</option>
-                {% endwith %}
+            {% for stream in audio_streams %}
+                <option value="{{stream.itag}}">{{"{} (.{})".format(stream.abr, "mp3")}}</option>
             {% endfor %}
-            {% endwith %}
         </select>
 
         <!-- Link (Hidden) -->
