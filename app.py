@@ -25,13 +25,13 @@ def get_streams(link: str):
     pytube = YouTube(link)
 
     # Video Streams
-    streams = pytube.streams.filter(type='video', progressive="False").order_by("resolution").desc()
+    video_streams = pytube.streams.filter(only_video=True).order_by("resolution").desc()
 
     # Audio Streams
-    streams.fmt_streams+= pytube.streams.filter(type='audio', progressive=None).order_by("abr").desc()
+    audio_streams = pytube.streams.filter(only_audio=True, subtype='mp4').order_by("abr").desc()
 
     # Return streams
-    return streams
+    return video_streams, audio_streams
 
 # Stream select endpoint
 @app.route('/streams', methods=['POST'])
@@ -41,8 +41,8 @@ def streams():
     
     try:
         # Get streams
-        streams = get_streams(link)
-        return render_template('streams.html', link=link, streams=streams)
+        video_streams, audio_streams = get_streams(link)
+        return render_template('streams.html', link=link, video_streams=video_streams, audio_streams=audio_streams)
     
     # Input problem
     except RegexMatchError:
@@ -69,10 +69,12 @@ def download():
     link = request.form['link']
 
     # Get the stream
-    stream = get_streams(link)[index]
+    video_streams, audio_streams = get_streams(link)
+    streams = video_streams + audio_streams
+    stream = streams[index]
 
     # Generate filename
-    filename = f'temp{round(time() * 1000)}.{stream.subtype}'
+    filename = f'temp{round(time() * 1000)}.{stream.subtype if stream.type == "video" else "mp3"}'
 
     # Download
     stream.download(output_path='temp', filename=filename)
@@ -92,7 +94,7 @@ if __name__ == "__main__":
     cleaner_thread.start()
 
     # Start the app
-    app.run(debug=True) # TODO: TURN OFF DEBUG MODE
+    app.run()
 
     # Join cleaner before end
     cleaner_thread.join()
