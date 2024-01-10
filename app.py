@@ -3,6 +3,7 @@ from pytube import YouTube
 from threading import Thread
 from urllib.error import URLError
 from cleaner import clear_directory
+from loggers import error_logger, info_logger
 from pytube.exceptions import RegexMatchError, AgeRestrictedError
 from flask import Flask, render_template, request, send_file, redirect, url_for
 
@@ -50,6 +51,7 @@ def streams():
    
    # Connection Problem
     except URLError:
+        error_logger.exception('URLError: Connection problem!')
         message = 'Connection problem!'
 
     # Age Restricted Video
