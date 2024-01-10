@@ -63,15 +63,13 @@ def streams():
 @app.route('/download', methods=['POST'])
 def download():
     # Stream index
-    index = int(request.form['stream'])
+    itag = int(request.form['stream'])
     
     # Video link
     link = request.form['link']
 
     # Get the stream
-    video_streams, audio_streams = get_streams(link)
-    streams = video_streams + audio_streams
-    stream = streams[index]
+    stream = YouTube(link).streams.get_by_itag(itag)
 
     # Generate filename
     filename = f'temp{round(time() * 1000)}.{stream.subtype if stream.type == "video" else "mp3"}'
