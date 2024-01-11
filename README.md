@@ -73,17 +73,17 @@ To run the app, follow the instructions below.
 ## Steps
 ### Clone the repository
 ```bash
-$ git clone https://github.com/diegoborbadev/pytube-downloader.git
+git clone https://github.com/diegoborbadev/pytube-downloader.git
 ```
 
 ### Install dependencies
 ```bash
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Run the app
 ```bash
-$ python app.py
+python app.py
 ```
 
 # Contributing
