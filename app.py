@@ -26,7 +26,7 @@ def get_streams(link: str):
     pytube = YouTube(link)
 
     # Video Streams
-    video_streams = pytube.streams.filter(only_video=True).order_by("resolution").desc()
+    video_streams = pytube.streams.filter(type='video', progressive=True).order_by("resolution").desc()
 
     # Audio Streams
     audio_streams = pytube.streams.filter(only_audio=True, subtype='mp4').order_by("abr").desc()
