@@ -1,15 +1,15 @@
 
 :root {
   --white-color:                  #ffffff;
-  --primary-color:                #13547a;
-  --secondary-color:              #80d0c7;
+  
+  --secondary-color:              #ffffff;
   --section-bg-color:             #f0f8ff;
-  --custom-btn-bg-color:          #80d0c7;
-  --custom-btn-bg-hover-color:    #13547a;
-  --dark-color:                   #000000;
+  --custom-btn-bg-color:          #EA384D;
+  --custom-btn-bg-hover-color:    #D31027;
+  --dark-color:                   #0e111a;
   --p-color:                      #717275;
-  --border-color:                 #7fffd4;
-  --link-hover-color:             #13547a;
+  --border-color:                 #EA384D;
+  --link-hover-color:             #D31027;
 
   --body-font-family:             'Open Sans', sans-serif;
   --title-font-family:            'Montserrat', sans-serif;
@@ -102,6 +102,7 @@ a,
 button {
   touch-action: manipulation;
   transition: all 0.3s;
+
 }
 
 a {
@@ -273,7 +274,11 @@ strong {
 }
 
 .sticky-wrapper.is-sticky .navbar {
-  background-color: var(--secondary-color);
+  background: #D31027;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #EA384D, #D31027);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #EA384D, #D31027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  
 }
 
 .navbar {
@@ -284,6 +289,7 @@ strong {
 
 .navbar-brand,
 .navbar-brand:hover {
+  color: #f0f8ff;
   font-size: var(--h3-font-size);
   font-weight: var(--font-weight-bold);
   display: block;
@@ -475,7 +481,11 @@ strong {
   HERO        
 -----------------------------------------*/
 .hero-section {
-  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+  background: #D31027;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #EA384D, #D31027);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #EA384D, #D31027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+
   position: relative;
   overflow: hidden;
   padding-top: 200px;
@@ -519,7 +529,7 @@ strong {
 
 .hero-section button[type="submit"] {
   background-color: var(--primary-color);
-  border: 0;
+  border: solid 3px whitesmoke;
 
   border-radius: var(--border-radius-large) !important;
   color: var(--white-color);
