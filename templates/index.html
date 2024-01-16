@@ -1,43 +1,21 @@
 {% extends 'base.html' %}
-
 {% block content %}
 
-<!--NAVBAR here-->
-{% include 'components/navbar.html' %}
 
-<!--HERO SECTION START-->
 
-<section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
-    <div class="container">
-        <div class="row">
+<form class="custom-form mt-4 pt-2 mb-lg-0 mb-5" action="{{ url_for('streams') }}" method="POST">
+    <div class="input-group input-group-lg">
 
-            <div class="col-lg-8 col-12 mx-auto">
-                <h1 class="text-white text-center">Youtube Video Downloader</h1>
+        <span class="input-group-text bi-youtube" id="basic-addon1">
+        </span>
 
-                <h6 class="text-center">Highest Quality + Fastest Download</h6>
+        <input name="keyword" type="search" class="form-control" id="keyword" placeholder="Insert Link Here"
+            aria-label="Search" aria-describedby="start-button">
 
-                <form class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search" action="{{ url_for('streams') }}"
-                    method="POST">
-                    <div class="input-group input-group-lg">
-                        <span class="input-group-text bi-youtube" id="basic-addon1">
-                        </span>
-
-                        <input name="keyword" type="search" class="form-control" id="keyword"
-                            placeholder="Insert Link Here" aria-label="Search" aria-describedby="start-button">
-
-                        <button type="submit" class="form-control">Download</button>
-                    </div>
-                </form>
-            </div>
-
-        </div>
+        <button type="submit" id="start-button" onclick="loading()" class="form-control">Download</button>
     </div>
-</section>
+</form>
 
-<!-- faq here -->
-{% include 'components/faq.html' %}
 
-<!--footer here-->
-{% include 'components/footer.html' %}
 
 {% endblock %}

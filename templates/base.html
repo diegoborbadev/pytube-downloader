@@ -29,11 +29,50 @@
 <body id="top">
 
     <main>
+        <!--NAVBAR here-->
+        {% include 'components/navbar.html' %}
         <!-- Content -->
-        {% block content %}
-        {% endblock %}
-    </main>
 
+        <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-8 col-12 mx-auto">
+                        <h1 class="text-white text-center">Youtube Video Downloader</h1>
+
+                        <h6 class="text-center">Highest Quality + Fastest Download</h6>
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- faq here -->
+        {% include 'components/faq.html' %}
+
+        <!--footer here-->
+        {% include 'components/footer.html' %}
+
+    </main>
+    <!-- Loading Gif -->
+    <img style="display: none;" id="loading" class="loading" src="{{ url_for('static', filename='loading.gif') }}"
+        alt="Loading">
+    <!-- Loading Script -->
+    <script>
+        function loading() {
+            document.getElementById('loading').style.display = 'flex';
+        }
+    </script>
+
+    <!-- Message Script -->
+    <script>
+        var message = '{{message}}'
+        if (message) {
+            alert(message)
+        }
+    </script>
 
 </body>
 <!-- JAVASCRIPT FILES -->
@@ -42,11 +81,6 @@
 <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
 <script src="{{ url_for('static', filename='js/click-scroll.js') }}"></script>
 <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
-<script>
-    var message = '{{message}}'
-    if (message) {
-        alert(message)
-    }
-</script>
+
 
 </html>

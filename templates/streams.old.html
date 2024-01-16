@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Form -->
+<form action="{{ url_for('download') }}" method="POST">
+    <!-- Input Group -->
+    <div class="input-group">
+        <!-- Options (Streams) -->
+        <select class="form-select border-danger border-5" name="stream" id="stream">
+            <!-- Video Streams -->
+            <option disabled>Video</option>
+            {% for stream in video_streams %}
+                <option value="{{stream.itag}}">{{"{} (.{})".format(stream.resolution, stream.subtype)}}</option>
+            {% endfor %}
+            
+            <!-- Audio Streams -->
+            <option disabled>Audio</option>
+            {% for stream in audio_streams %}
+                <option value="{{stream.itag}}">{{"{} (.{})".format(stream.abr, "mp3")}}</option>
+            {% endfor %}
+        </select>
+
+        <!-- Link (Hidden) -->
+        <input type="hidden" name="link" value="{{link}}" />
+
+        <!-- Select Button -->
+        <button class="btn btn-danger" type="submit" onclick="loading()">Select</button>
+    </div>
+</form>
+{% endblock %}
