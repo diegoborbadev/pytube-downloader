@@ -1,4 +1,3 @@
-{% block content %}
 {% extends 'base.html' %}
 
 {% block content %}
@@ -11,7 +10,7 @@
         </span>
         <!-- problem -->
         <!-- Options (Streams) -->
-        <select type="search" class="form-control" name="stream" id="stream">
+        <select type="search" class="select-input" name="stream" id="stream">
             <!-- Video Streams -->
             <option disabled>Video</option>
             {% for stream in video_streams %}
@@ -26,12 +25,9 @@
         </select>
 
         <!-- Link (Hidden) -->
-        <input class="form-control" type="hidden" name="link" value="{{link}}" />
+        <input type="hidden" name="link" value="{{link}}" />
         <!-- Select Button -->
         <button type="submit" id="start-button" onclick="loading()" class="form-control">Download</button>
     </div>
 </form>
-{% endblock %}
-
-
 {% endblock %}

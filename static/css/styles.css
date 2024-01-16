@@ -206,7 +206,10 @@ strong {
   transition: all 0.3s;
   padding: 10px 20px;
 }
-
+.button-center{
+  margin: 20px auto;
+  padding: 10px;
+}
 .custom-btn:hover {
   background: var(--custom-btn-bg-hover-color);
   color: var(--white-color);
@@ -496,10 +499,28 @@ strong {
   margin-bottom: 0;
   padding-left: 0;
 }
+.select-input{
+  border: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+  padding-left: 0;
+  background-color: transparent;
+  border: 0;
+  background-color: var(--white-color);
+  border-radius: var(--border-radius-large);
+}
+@media only screen and (min-width: 750px){
+  .select-input{
+    padding: 0 22%;
+    margin: 0 5%;
+  }
+
+}
 
 .hero-section button[type="submit"] {
   background-color: var(--primary-color);
   border: 0;
+
   border-radius: var(--border-radius-large) !important;
   color: var(--white-color);
   max-width: 150px;
@@ -839,39 +860,6 @@ blockquote {
   font-size: var(--btn-font-size);
   line-height: 40px;
 }
-
-/*---------------------------------------
-  NEWSLETTER               
------------------------------------------*/
-.newsletter-image {
-  border-radius: var(--border-radius-medium);
-}
-
-
-/*---------------------------------------
-  CONTACT               
------------------------------------------*/
-.google-map {
-  border-radius: var(--border-radius-medium);
-}
-
-.contact-form .form-floating>textarea {
-  border-radius: var(--border-radius-medium);
-  height: 150px;
-}
-
-
-/*---------------------------------------
-  SUBSCRIBE FORM               
------------------------------------------*/
-.subscribe-form-wrap {
-  padding: 50px;
-}
-
-.subscribe-form {
-  width: 95%;
-}
-
 
 /*---------------------------------------
   CUSTOM FORM               

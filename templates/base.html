@@ -40,9 +40,11 @@
                     <div class="col-lg-8 col-12 mx-auto">
                         <h1 class="text-white text-center">Youtube Video Downloader</h1>
 
-                        <h6 class="text-center">Highest Quality + Fastest Download</h6>
+                        <h6 class="text-center">Highest Quality + Fastest Download </h6>
                         {% block content %}
                         {% endblock %}
+                        <img style="display: none;" id="loading" class="loading"
+                            src="{{ url_for('static', filename='loading.gif') }}" alt="Loading">
                     </div>
 
                 </div>
@@ -56,9 +58,7 @@
         {% include 'components/footer.html' %}
 
     </main>
-    <!-- Loading Gif -->
-    <img style="display: none;" id="loading" class="loading" src="{{ url_for('static', filename='loading.gif') }}"
-        alt="Loading">
+
     <!-- Loading Script -->
     <script>
         function loading() {

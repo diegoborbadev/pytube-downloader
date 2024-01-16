@@ -2,11 +2,11 @@
 
 {% block content %}
 <!-- Form -->
-<form action="{{ url_for('downloadFile', filename=filename) }}">
+<form style="align-items: center;" action="{{ url_for('downloadFile', filename=filename) }}">
     <!-- Input Group -->
-    <div class="input-group d-flex justify-content-center">
-        <!-- Download Button -->
-        <button class="btn btn-danger btn-lg" type="submit">Download</button>
-    </div>
+
+    <!-- Download Button -->
+    <button type="submit" id="start-button" onclick="loading()" class="form-control button-center">Download</button>
+
 </form>
 {% endblock %}
