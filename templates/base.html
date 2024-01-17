@@ -43,7 +43,14 @@
                         <h6 class="text-center">Highest Quality + Fastest Download </h6>
                         {% block content %}
                         {% endblock %}
-
+                        <div class="container-load">
+                            <div id="loader" class="lds-ring text-center" style="display:none;">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -63,6 +70,15 @@
         var message = '{{message}}'
         if (message) {
             alert(message)
+        }
+    </script>
+    <script>
+        function startDownload() {
+            // Get the button and loader elements
+            var loader = document.getElementById('loader');
+
+            // Hide the button and show the loader
+            loader.style.display = 'inline-block';
         }
     </script>
 
