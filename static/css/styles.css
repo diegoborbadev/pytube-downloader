@@ -913,6 +913,7 @@ blockquote {
 .site-footer {
   border-bottom: 10px solid var(--secondary-color);
   position: relative;
+  padding: 5vh 0 5vh; 
 }
 
 
