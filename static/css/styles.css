@@ -271,6 +271,7 @@ strong {
   top: 0;
   right: 0;
   left: 0;
+  background: linear-gradient(to right, #EA384D, #D31027);
 }
 
 .sticky-wrapper.is-sticky .navbar {
@@ -995,7 +996,7 @@ blockquote {
   }
   
   .navbar {
-    background-color: var(--secondary-color);
+    background: linear-gradient(to right, #EA384D, #D31027);
   }
 
   .navbar-nav .dropdown-menu {
