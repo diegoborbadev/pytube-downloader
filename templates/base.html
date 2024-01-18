@@ -2,47 +2,46 @@
 <html lang="en">
 
 <head>
+    <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+    <!-- Title -->
     <title>PyTube</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <!-- CSS FILES -->
+    
+    <!-- Style -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
-
-
 </head>
 
 <body id="top">
-
     <main>
-        <!--NAVBAR here-->
+        <!-- Navbar -->
         {% include 'components/navbar.html' %}
-        <!-- Content -->
-
+        
+        <!-- Border -->
         <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+            <!-- Content -->
             <div class="container">
+                <!-- Row -->
                 <div class="row">
-
                     <div class="col-lg-8 col-12 mx-auto">
+                        <!-- Text -->
                         <h1 class="text-white text-center">Youtube Video Downloader</h1>
-
                         <h6 class="text-center">Highest Quality + Fastest Download </h6>
+
+                        <!-- Page Content -->
                         {% block content %}
                         {% endblock %}
+
+                        <!-- Loading -->
                         <div class="container-load">
                             <div id="loader" class="lds-ring text-center" style="display:none;">
                                 <div></div>
@@ -52,15 +51,16 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- faq here -->
+        <!-- FAQ -->
         {% include 'components/faq.html' %}
 
-        <!--footer here-->
+        <hr>
+
+        <!-- Footer -->
         {% include 'components/footer.html' %}
 
     </main>
@@ -72,6 +72,8 @@
             alert(message)
         }
     </script>
+
+    <!-- Download Script -->
     <script>
         function startDownload() {
             // Get the button and loader elements
@@ -82,12 +84,9 @@
         }
     </script>
 
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
 </body>
-<!-- JAVASCRIPT FILES -->
-<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
-
-
-
 </html>

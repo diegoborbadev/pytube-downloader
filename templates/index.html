@@ -1,23 +1,18 @@
 {% extends 'base.html' %}
+
 {% block content %}
-
-
-
+<!-- Form -->
 <form class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search" action="{{ url_for('streams') }}" method="POST">
+    <!-- Input Group -->
     <div class="input-group input-group-lg">
-        <span class="input-group-text bi-youtube" id="basic-addon1">
-        </span>
+        <!-- Little Youtube Logo -->
+        <span class="input-group-text bi-youtube" id="basic-addon1"></span>
 
-        <input name="link" type="search" class="form-control" id="keyword" placeholder="Insert Link Here"
-            aria-label="Search" aria-describedby="start-button">
+        <!-- Link Input -->
+        <input name="link" type="search" class="form-control" id="keyword" placeholder="Insert Link Here" aria-label="Search" aria-describedby="start-button">
 
-        <button type="submit" id="start-button" onclick="startDownload()" class="form-control">Download
-        </button>
+        <!-- Start Button (get Streams) -->
+        <button type="submit" id="start-button" onclick="startDownload()" class="form-control">Download</button>
     </div>
 </form>
-
-
-
-
-
 {% endblock %}
