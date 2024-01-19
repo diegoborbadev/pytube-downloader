@@ -4,12 +4,12 @@
 <!-- Form -->
 <form class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search" action="{{ url_for('download') }}" method="POST">
     <!-- Input Group -->
-    <div class="input-group input-group-lg form-control">
+    <div class="input-group input-group-lg">
         <!-- Little Youtube Logo -->
         <span class="input-group-text bi-youtube" id="basic-addon1"></span>
         
         <!-- Options (Streams) -->
-        <select type="search" class="select-input" name="stream" id="stream">
+        <select type="search" class="form-select" name="stream" id="stream">
             <!-- Video Streams -->
             <option disabled>Video</option>
             {% for stream in video_streams %}
@@ -27,7 +27,7 @@
         <input type="hidden" name="link" value="{{link}}" />
         
         <!-- Select Button -->
-        <button type="submit" id="start-button" onclick="startDownload()" class="form-control">Download</button>
+        <button type="submit" id="start-button" onclick="startDownload()" class="form-control ml-1">Download</button>
     </div>
 </form>
 {% endblock %}

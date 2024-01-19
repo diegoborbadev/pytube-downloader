@@ -553,30 +553,15 @@ strong {
   border: 0;
 }
 
+.hero-section .form-select {
+  border: 0;
+}
+
 .hero-section input[type="search"] {
   border: 0;
   box-shadow: none;
   margin-bottom: 0;
   padding-left: 0;
-}
-
-.select-input {
-  border: 0;
-  box-shadow: none;
-  margin-bottom: 0;
-  padding-left: 0;
-  background-color: transparent;
-  border: 0;
-  background-color: var(--white-color);
-  border-radius: var(--border-radius-large);
-}
-
-@media only screen and (min-width: 750px) {
-  .select-input {
-    padding: 0 22%;
-    margin: 0 5%;
-  }
-
 }
 
 .hero-section button[type="submit"] {
