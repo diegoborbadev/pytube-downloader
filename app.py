@@ -94,7 +94,7 @@ if __name__ == "__main__":
     cleaner_thread.start()
 
     # Start the app
-    app.run()
+    app.run(debug=True)
 
     # Join cleaner before end
     cleaner_thread.join()

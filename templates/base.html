@@ -1,43 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
     <!-- Meta -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Title -->
-    <title>Pytube Downloader</title>
-    
+    <title>PyTube</title>
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
-
-    <!-- Css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link  href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css"/>
+    
+    <!-- Style -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
 </head>
 
-<body>
-    <!-- Main Container -->
-    <div class="container position-absolute top-50 start-50 translate-middle">
-        <!-- Logo -->
-        <div class="d-flex justify-content-center">
-            <img class="img-fluid" src="{{ url_for('static', filename='logo.svg') }}" alt="Logo">
-        </div>
+<body id="top">
+    <main>
+        <!-- Navbar -->
+        {% include 'components/navbar.html' %}
         
-        <!-- Content -->
-        {% block content %}{% endblock %}
+        <!-- Border -->
+        <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+            <!-- Content -->
+            <div class="container">
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-8 col-12 mx-auto">
+                        <!-- Text -->
+                        <h1 class="text-white text-center">Pytube Downloader</h1>
+                        <h6 class="text-center">
+                            An <a href="https://github.com/diegoborbadev/pytube-downloader" style="--link-hover-color: var(--bs-white);">Open-Source Project</a> 
+                            made using <a href="https://github.com/pytube/pytube" style="--link-hover-color: var(--bs-white);">Pytube</a>
+                        </h6>
 
-        <!-- Loading Gif -->
-        <img id="loading" class="loading" src="{{ url_for('static', filename='loading.gif') }}" alt="Loading">
-    </div>
+                        <!-- Page Content -->
+                        {% block content %}
+                        {% endblock %}
 
-    <!-- Loading Script -->
-    <script>
-        function loading() {
-            document.getElementById('loading').style.visibility = 'visible';
-        }
-    </script>
+                        <!-- Loading -->
+                        <div class="container-load">
+                            <div id="loader" class="lds-ring text-center" style="display:none;">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        {% include 'components/faq.html' %}
+
+        <hr>
+
+        <!-- Footer -->
+        {% include 'components/footer.html' %}
+
+    </main>
 
     <!-- Message Script -->
     <script>
@@ -46,6 +75,21 @@
             alert(message)
         }
     </script>
-</body>
 
+    <!-- Download Script -->
+    <script>
+        function startDownload() {
+            // Get the button and loader elements
+            var loader = document.getElementById('loader');
+
+            // Hide the button and show the loader
+            loader.style.display = 'inline-block';
+        }
+    </script>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
+</body>
 </html>
