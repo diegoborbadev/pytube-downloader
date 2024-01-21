@@ -15,8 +15,8 @@
 </a>
 
 <!-- Flask Version -->
-<a href="https://flask.palletsprojects.com/en/2.3.x/changes/#version-2-2-2">
-    <img alt="Flask" src="https://img.shields.io/badge/Flask-2.2.2-000000?logo=flask&logoColor=white">
+<a href="https://flask.palletsprojects.com/en/3.0.x/">
+    <img alt="Flask" src="https://img.shields.io/badge/Flask-3.0.0-000000?logo=flask&logoColor=white">
 </a>
 
 <!-- Pytube Version -->
